@@ -77,6 +77,6 @@ fun push (pila: Pila, numero: Int){
     }
 
 }
-fun quitarNumero (){
+fun pop (){
 
 }
