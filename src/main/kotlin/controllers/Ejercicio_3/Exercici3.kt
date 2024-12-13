@@ -1,7 +1,6 @@
-package controllers.Exe3
+package controllers.Ejercicio_3
 
-import java.time.*
-import java.time.format.DateTimeFormatter
+
 import java.util.*
 
 fun main() {
@@ -15,7 +14,7 @@ fun main() {
 
 
     // Calcular l'IVA
-    val preuIVA = calculaIVA(preu, IVA, data)
+    val preuIVA = validarSuperusuari(preu, IVA, data)
 
     //Mostrar el resultat
     showResultat(preuIVA)
@@ -86,52 +85,12 @@ fun scanDate(msg: String, scan: Scanner): String {
  * @param quantitat quantita que volem sumar-li al número
  * @return resultat de la suma
  */
-fun calculaIVA(preu: Int, iva: String, consulta: String): Double {
+fun validarSuperusuari(preu: Int, iva: String, consulta: String): Double {
 
     var general = 0.0
     var reduit = 0.0
     var superReduit = 0.0
     var exempt = 0.0
-
-    val format = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-    val data = LocalDate.parse(consulta, format)
-    when (data) {
-        in LocalDate.parse("01-01-1986", format)..LocalDate.parse("31-12-1991", format)
-            -> {
-            general = 1.12
-            reduit = 1.06
-            superReduit = 0.0
-        }
-        in LocalDate.parse("01-01-1992", format)..LocalDate.parse("31-12-1992", format)
-            -> {
-            general = 1.15
-            reduit = 1.06
-            superReduit = 0.0
-        }
-        in LocalDate.parse("01-01-1993", format)..LocalDate.parse("31-12-1994", format)
-            -> {
-            general = 1.15
-            reduit = 1.06
-            superReduit = 1.03
-        }
-        in LocalDate.parse("01-01-1995", format)..LocalDate.parse("31-12-2009", format)
-            -> {
-            general = 1.16
-            reduit = 1.07
-            superReduit = 1.04
-        }
-        in LocalDate.parse("01-01-2010", format)..LocalDate.parse("15-07-2012", format)
-            -> {
-            general = 1.18
-            reduit = 1.08
-            superReduit = 1.04
-        }
-    }
-    if (data >= LocalDate.parse("15-07-2012", format)) {
-        general = 1.21
-        reduit = 1.10
-        superReduit = 1.04
-    }
 
     var resultat = 0.0
 

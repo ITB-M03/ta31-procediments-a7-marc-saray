@@ -1,4 +1,4 @@
-package controllers.Exe1
+package controllers.Ejercicio_1
 
 import java.time.*
 import java.time.format.DateTimeFormatter
@@ -9,9 +9,13 @@ fun main() {
     val scan: Scanner = openScan()
 
     // Demanar les dades
-    val preu = scanNum("Introdueix un número: ", scan)
-    val IVA = scan("Introdueix un tipus d'IVA: ", scan)
-    val data = scanDate("Introdueix un data: ", scan)
+    val preu = scanNum("Introdueix el preu: ", scan)
+    val IVA = scanIVA("""Introdueix un tipus d'IVA
+    0 -> General
+    1 -> Reduït
+    2 -> Superreduit
+    3 -> Exempt""".trimMargin(), scan)
+    val data = scanDate("Introdueix una data: ", scan)
 
 
     // Calcular l'IVA
@@ -32,12 +36,12 @@ fun main() {
  * @param scan scaneja un número
  * @return el número escanejat
  */
-fun scanNum(msg: String, scan: Scanner): Int {
-    val numero: Int
+fun scanNum(msg: String, scan: Scanner): Double {
+    val numero: Double
 
     println(msg)
 
-    numero = scan.nextInt()
+    numero = scan.nextDouble()
 
     return numero
 }
@@ -50,15 +54,16 @@ fun scanNum(msg: String, scan: Scanner): Int {
  * @param scan scaneja un string
  * @return el string escanejat
  */
-fun scan(msg: String, scan: Scanner): String {
-    val iva: String
+fun scanIVA(msg: String, scan: Scanner): String {
+    val iva: Int
 
     println(msg)
 
-    iva = scan.next()
-    scan.nextLine()
+    iva = scan.nextInt()
 
-    return iva.lowercase()
+    val tipus = arrayOf("general", "reduit", "superreduit", "exempt")
+
+    return tipus[iva]
 }
 
 /**
@@ -83,16 +88,17 @@ fun scanDate(msg: String, scan: Scanner): String {
  *@author SarayV
  * @version 1.0
  *
- *@param num número que ens dona l'usuari
- * @param quantitat quantita que volem sumar-li al número
+ *@param preu número que ens dona l'usuari
+ * @param iva selecció del tipus d'iva que vol l'usuari
+ * @param consulta data de la factura de l'usuari
  * @return resultat de la suma
  */
-fun calculaIVA(preu: Int, iva: String, consulta: String): Double {
+fun calculaIVA(preu: Double, iva: String, consulta: String): String {
 
     var general = 0.0
     var reduit = 0.0
     var superReduit = 0.0
-    var exempt = 0.0
+    val exempt = 1.0
 
     val format = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     val data = LocalDate.parse(consulta, format)
@@ -101,13 +107,13 @@ fun calculaIVA(preu: Int, iva: String, consulta: String): Double {
             -> {
             general = 1.12
             reduit = 1.06
-            superReduit = 0.0
+            superReduit = 1.0
         }
         in LocalDate.parse("01-01-1992", format)..LocalDate.parse("31-12-1992", format)
             -> {
             general = 1.15
             reduit = 1.06
-            superReduit = 0.0
+            superReduit = 1.0
         }
         in LocalDate.parse("01-01-1993", format)..LocalDate.parse("31-12-1994", format)
             -> {
@@ -137,24 +143,23 @@ fun calculaIVA(preu: Int, iva: String, consulta: String): Double {
     var resultat = 0.0
 
     when(iva){
-        "genereal" -> resultat = preu * general
+        "general" -> resultat = preu * general
         "reduit" -> resultat = preu * reduit
-        "reduït" -> resultat = preu * reduit
         "superreduit" -> resultat = preu * superReduit
         "exempt" -> resultat = preu * exempt
     }
 
-    return resultat
+    return "%.2f".format(resultat)
 }
 
 /**
  *@author SarayV
  * @version 1.0
  *
- *@param resultat imprimeix el resultat de la suma amb un missatge
+ *@param resultat imprimeix el resultat de la factura amb un missatge
  */
-fun showResultat(resultat: Double) {
-    print("El resultat del preu amb el IVA és: $resultat")
+fun showResultat(resultat: String) {
+    print("El resultat del preu amb el IVA és: ${String.format(Locale.UK, "%.2f", resultat)}")
 }
 
 /**
