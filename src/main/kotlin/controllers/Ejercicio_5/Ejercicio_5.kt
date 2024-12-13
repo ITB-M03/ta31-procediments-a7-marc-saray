@@ -57,6 +57,14 @@ fun menu (msg:String, numero:Int, scan: Scanner): Int {
     }
 
     return numero
+}
+fun pila (valors: Int) {
+    val pila = arrayOfNulls<Int>(10)
 
+    try {
+        pila[11] = valors
+    }catch (e: ArrayIndexOutOfBoundsException){
+        println("La pila es troba plena")
+    }
 
 }
