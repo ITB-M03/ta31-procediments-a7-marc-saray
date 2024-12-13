@@ -84,7 +84,6 @@ fun push (pila: Pila, numero: Int){
 
 
 
-
 //Creamos la funcion de imprimir el menu
 fun listadoMenu (){
     println("1.- Afegir número (push)")
