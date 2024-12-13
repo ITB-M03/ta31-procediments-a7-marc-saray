@@ -4,7 +4,7 @@ import utilities.abrirScanner
 import utilities.cerrarScanner
 import java.util.*
 
-data class classPila (
+data class Pila (
     val elementos: Array<Int> = Array<Int>(10){ 0 },
     var top : Int = 0
 )
@@ -17,12 +17,17 @@ fun main() {
 
     // Llamamos a la función "pedirNumero"
     println("Bienvenido al Menú")
-    //Funcion para mostrar menu
 
-    val numero = pedirNumero("Pon un número del 1 al 4", scan)
+    //Funcion para mostrar menu
+    listadoMenu()
+
+    val numero = pedirNumero("Pon un número del 1 al 4: ", scan)
+
 
     // Llamamos a la función "Menu"
     val lista = menu(numero, pila)
+
+
 
     // Llamamos a la función de cerrar scanner
     cerrarScanner(scan)
@@ -40,32 +45,30 @@ fun pedirNumero(msg: String, scan: Scanner): Int {
     return numero_user
 }
 //Hacemos una funcion para hacer el menu
-fun menu (numero:Int, pila: classPila, scan: Scanner){
-var
-    //Hacemos un when que si el usuario da un numero del 1 al 4 llamara a una funcion
-    when(numero){
+fun menu(numero: Int, pila: Pila) {
+
+     when (numero) {
         1 -> {
-            push(pila, "introduce un numero", scan.nextInt())
+            push(pila, numero)
         }
         2 -> {
-            pop(pila)
+
         }
         3 -> {
             mostrar(pila)
         }
-        4 ->{
-          /*  salir()*/
+        4 -> {
         }
-        else ->{
-            println("Ese numero no vale, pon otro")
+        else -> {
         }
     }
 }
-fun crearPila (): classPila {
-    val pila = classPila()
+
+fun crearPila (): Pila {
+    val pila = Pila()
     return pila
 }
-fun push (pila: classPila, msg: String, numero: Int){
+fun push (pila: Pila, numero: Int){
     if (pila.top == 10){
         println("Pila llena")
     } else {
@@ -73,14 +76,24 @@ fun push (pila: classPila, msg: String, numero: Int){
         pila.top++
     }
 }
-fun pop (pila: classPila){
-    pila.elementos[pila.top] = 0
-    pila.top --
+
+
+
+
+
+
+
+
+
+//Creamos la funcion de imprimir el menu
+fun listadoMenu (){
+    println("1.- Afegir número (push)")
+    println("2.- Treure número (pop)")
+    println("3.- Mostrar contingut de la pila")
+    println("4.- Sortir")
 }
-fun mostrar(pila: classPila){
-    for (i in pila.elementos.indices){
-        if (pila.elementos[i] != 0){
-            println(pila.elementos[i])
-        }
-    }
+
+//Creamos la funcion mostrar pila
+fun mostrar(pila: Pila){
+    println(pila.elementos.contentToString())
 }
