@@ -25,7 +25,7 @@ fun main() {
 
 
     // Llamamos a la función "Menu"
-    val lista = menu(numero, pila)
+    val lista = menu(numero, pila, scan = scan)
 
 
 
@@ -45,23 +45,29 @@ fun pedirNumero(msg: String, scan: Scanner): Int {
     return numero_user
 }
 //Hacemos una funcion para hacer el menu
-fun menu(numero: Int, pila: Pila) {
+fun menu(numero: Int, pila: Pila, scan: Scanner) {
+
+    var sortir1 = sortirPrograma()
 
      when (numero) {
-        1 -> {
-            push(pila, numero)
-        }
-        2 -> {
+         while (sortir1 == false) {
+             1 -> {
+                 push(pila, scan.nextInt())
+             }
+             2 -> {
 
-        }
-        3 -> {
-            mostrar(pila)
-        }
-        4 -> {
-        }
-        else -> {
-        }
-    }
+             }
+             3 -> {
+                 mostrar(pila)
+             }
+             4 -> {
+                 sortirPrograma()
+             }
+             else -> {
+             }
+         }
+     }
+
 }
 
 fun crearPila (): Pila {
@@ -77,7 +83,12 @@ fun push (pila: Pila, numero: Int){
     }
 }
 
+//Creamos la funcion salir
+fun sortirPrograma(): Boolean{
 
+    var sortir = true
+    return sortir
+}
 
 
 
