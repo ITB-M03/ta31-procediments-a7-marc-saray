@@ -17,10 +17,12 @@ fun main() {
 
     // Llamamos a la función "pedirNumero"
     println("Bienvenido al Menú")
+
     //Funcion para mostrar menu
     listadoMenu()
 
     val numero = pedirNumero("Pon un número del 1 al 4: ", scan)
+
 
     // Llamamos a la función "Menu"
     val lista = menu(numero, pila)
@@ -79,10 +81,7 @@ fun push (pila: Pila, numero: Int){
 
 
 
-//Creamos la funcion mostrar pila
-fun mostrar(pila: Pila){
-    println(pila.elementos.contentToString())
-}
+
 
 
 
@@ -92,4 +91,9 @@ fun listadoMenu (){
     println("2.- Treure número (pop)")
     println("3.- Mostrar contingut de la pila")
     println("4.- Sortir")
+}
+
+//Creamos la funcion mostrar pila
+fun mostrar(pila: Pila){
+    println(pila.elementos.contentToString())
 }
