@@ -76,7 +76,17 @@ fun push (pila: Pila, numero: Int){
         pila.top++
     }
 }
-
+fun pop (pila: Pila){
+    pila.elementos[pila.top] = 0
+    pila.top --
+}
+fun mostrar(pila: Pila){
+    for (i in pila.elementos.indices){
+        if (pila.elementos[i] != 0){
+            println(pila.elementos[i])
+        }
+    }
+}
 
 
 
