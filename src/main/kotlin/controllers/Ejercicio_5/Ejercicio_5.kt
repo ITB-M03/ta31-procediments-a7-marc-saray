@@ -58,13 +58,28 @@ fun menu (msg:String, numero:Int, scan: Scanner): Int {
 
     return numero
 }
-fun pila (valors: Int) {
+fun pila (): Array<Int?> {
     val pila = arrayOfNulls<Int>(10)
-
+    return pila
+}
+fun push (pila: Array<Int?>, plena: Boolean, numero: Int){
+    var index = 0
+    if (!plena) {
+        pila.set(numero, index)
+        index ++
+    }
+}
+fun errorIndex(pila: Array<Int?>, numero: Int): Boolean{
+    var plena = false
     try {
-        pila[11] = valors
+        var index = 0
+        if (!plena) {
+            pila.set(numero, index)
+            index ++
+        }
     }catch (e: ArrayIndexOutOfBoundsException){
         println("La pila es troba plena")
+        plena = true
     }
-
+    return plena
 }
