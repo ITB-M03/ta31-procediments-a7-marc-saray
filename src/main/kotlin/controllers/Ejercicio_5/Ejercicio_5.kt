@@ -95,7 +95,6 @@ fun sortirPrograma(): Boolean{
 
 
 
-
 //Creamos la funcion de imprimir el menu
 fun listadoMenu (){
     println("1.- Afegir número (push)")
