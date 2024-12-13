@@ -25,7 +25,7 @@ fun main() {
 
 
     // Llamamos a la función "Menu"
-    val lista = menu(numero, pila)
+    val lista = menu(numero, pila, scan)
 
 
 
@@ -45,21 +45,32 @@ fun pedirNumero(msg: String, scan: Scanner): Int {
     return numero_user
 }
 //Hacemos una funcion para hacer el menu
-fun menu(numero: Int, pila: Pila) {
+fun menu(numero: Int, pila: Pila, scan: Scanner) {
 
-     when (numero) {
-        1 -> {
-            push(pila, numero)
-        }
-        2 -> {
+    var salir = false
 
-        }
-        3 -> {
-            mostrar(pila)
-        }
-        4 -> {
-        }
-        else -> {
+    while (!salir) {
+
+        when (numero) {
+            1 -> {
+                println("Introduce un numero para agregarlo")
+                push(pila,scan.nextInt())
+            }
+
+            2 -> {
+                pop(pila)
+            }
+
+            3 -> {
+                mostrar(pila)
+            }
+
+            4 -> {
+                salir = true
+            }
+
+            else -> {
+            }
         }
     }
 }
@@ -80,6 +91,7 @@ fun pop (pila: Pila){
     pila.elementos[pila.top] = 0
     pila.top --
 }
+
 fun mostrar(pila: Pila){
     for (i in pila.elementos.indices){
         if (pila.elementos[i] != 0){
@@ -87,12 +99,6 @@ fun mostrar(pila: Pila){
         }
     }
 }
-
-
-
-
-
-
 
 //Creamos la funcion de imprimir el menu
 fun listadoMenu (){
@@ -103,6 +109,6 @@ fun listadoMenu (){
 }
 
 //Creamos la funcion mostrar pila
-fun mostrar(pila: Pila){
+fun imprimir(pila: Pila){
     println(pila.elementos.contentToString())
 }
