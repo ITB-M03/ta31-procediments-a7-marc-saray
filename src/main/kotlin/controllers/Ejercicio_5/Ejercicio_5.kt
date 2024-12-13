@@ -4,8 +4,8 @@ import utilities.abrirScanner
 import utilities.cerrarScanner
 import java.util.*
 
-data class Pila (
-    val elementos: Array<Int> = Array<Int>(10){ 0 }
+data class classPila (
+    val elementos: Array<Int> = Array<Int>(10){ 0 },
     var top : Int = 0
 )
 
@@ -40,43 +40,47 @@ fun pedirNumero(msg: String, scan: Scanner): Int {
     return numero_user
 }
 //Hacemos una funcion para hacer el menu
-fun menu (numero:Int, pila: Pila): String {
-
+fun menu (numero:Int, pila: classPila, scan: Scanner){
+var
     //Hacemos un when que si el usuario da un numero del 1 al 4 llamara a una funcion
     when(numero){
         1 -> {
-            push(pila, 9)
+            push(pila, "introduce un numero", scan.nextInt())
         }
         2 -> {
-            pop()
+            pop(pila)
         }
         3 -> {
-            crearPila()
+            mostrar(pila)
         }
         4 ->{
-            salir()
+          /*  salir()*/
         }
         else ->{
             println("Ese numero no vale, pon otro")
         }
     }
-    return when
-
-
 }
-fun crearPila (): Pila {
-    val pila = Pila()
+fun crearPila (): classPila {
+    val pila = classPila()
     return pila
 }
-fun push (pila: Pila, numero: Int){
+fun push (pila: classPila, msg: String, numero: Int){
     if (pila.top == 10){
         println("Pila llena")
     } else {
         pila.elementos[pila.top] = numero
         pila.top++
     }
-
 }
-fun pop (){
-
+fun pop (pila: classPila){
+    pila.elementos[pila.top] = 0
+    pila.top --
+}
+fun mostrar(pila: classPila){
+    for (i in pila.elementos.indices){
+        if (pila.elementos[i] != 0){
+            println(pila.elementos[i])
+        }
+    }
 }
