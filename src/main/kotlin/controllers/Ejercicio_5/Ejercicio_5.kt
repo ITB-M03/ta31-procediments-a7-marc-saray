@@ -33,16 +33,5 @@ fun pedirNumero (msg:String,  scan: Scanner): Int{
     //Devolvemos el numero del usuario
     return numerousuario
 }
-
-//Creamos una funcion para los numeros del menu
-fun numMenu (): List<Int> {
-    //Creamos una lista del 1 al 4
-        val listanumeros = listOf(1,2,3,4)
-    //Devolvemos la lista entera
-    return listanumeros
-}
-
-//Creamos una funcion que lea la lista y el numero
-fun menu (numerousuario){
-
-}
+//Hacemos una funcion para hacer el menu
+fun menu ()
