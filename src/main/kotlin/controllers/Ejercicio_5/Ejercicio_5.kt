@@ -76,18 +76,3 @@ fun push (pila: Array<Int>, numero: Int): Array<Int>{
     }
     return pila
 }
-
-/*fun errorIndex(pila: Array<Int?>, numero: Int): Boolean{
-    var plena = false
-    try {
-        var index = 0
-        if (!plena) {
-            pila.set(numero, index)
-            index ++
-        }
-    }catch (e: ArrayIndexOutOfBoundsException){
-        println("La pila es troba plena")
-        plena = true
-    }
-    return plena
-}*/
