@@ -1,46 +1,42 @@
 package controllers.Ejercicio_5
 
-import controllers.Exe1.scan
 import utilities.abrirScanner
 import utilities.cerrarScanner
 import java.util.*
 
-fun main(){
-
-    //Llamamos a la funcion de abrir scanner
+fun main() {
+    // Llamamos a la función de abrir scanner
     val scan: Scanner = abrirScanner()
 
-    //Llamamos a la funcion "pedirNumero"
-    println("Bienvenido al Menu")
-    val numero = pedirNumero("Pon un numero del 1 al 4",scan)
+    // Llamamos a la función "pedirNumero"
+    println("Bienvenido al Menú")
+    val numero = pedirNumero("Pon un número del 1 al 4", scan)
 
-    //Llamamos a la funcion "Menu"
+    // Llamamos a la función "Menu"
     val lista = menu(numero)
 
-
-    //LLamamos a la funcion de cerrar scanner
+    // Llamamos a la función de cerrar scanner
     cerrarScanner(scan)
-
 }
-fun pedirNumero (msg: String, numero: Int, scan: Scanner):Int{
-    //Le imprimos el mensaje por pantalla
+
+// Función para pedir un número al usuario
+fun pedirNumero(msg: String, scan: Scanner): Int {
+    // Imprimimos el mensaje por pantalla
     println(msg)
 
-    //El usuario da un numero
+    // El usuario da un número
     val numero_user = scan.nextInt()
 
-    //Devolvemos el valor
+    // Devolvemos el valor
     return numero_user
-
 }
-
 //Hacemos una funcion para hacer el menu
-fun menu (msg:String, numero:Int, scan: Scanner): Int {
+fun menu (msg:String, numero:Int, scan: Scanner): String {
 
     //Hacemos un when que si el usuario da un numero del 1 al 4 llamara a una funcion
     when(numero){
         1 -> {
-            push()
+            push(pila(), false, 9)
         }
         2 -> {
             pop()
@@ -55,8 +51,9 @@ fun menu (msg:String, numero:Int, scan: Scanner): Int {
             println("Ese numero no vale, pon otro")
         }
     }
+    return when
 
-    return numero
+
 }
 fun pila (): Array<Int?> {
     val pila = arrayOfNulls<Int>(10)
@@ -75,4 +72,8 @@ fun push (pila: Array<Int>, numero: Int): Array<Int>{
         plena = true
     }
     return pila
+
+    for (i in pila.indices){
+        if (pila.lastIndex == null){
+    }
 }
