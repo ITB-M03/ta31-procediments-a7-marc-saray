@@ -62,14 +62,22 @@ fun pila (): Array<Int?> {
     val pila = arrayOfNulls<Int>(10)
     return pila
 }
-fun push (pila: Array<Int?>, plena: Boolean, numero: Int){
-    var index = 0
-    if (!plena) {
-        pila.set(numero, index)
-        index ++
+fun push (pila: Array<Int>, numero: Int): Array<Int>{
+    var plena = false
+    try {
+        var index = 0
+        if (!plena) {
+            pila.set(numero, index)
+            index ++
+        }
+    }catch (e: ArrayIndexOutOfBoundsException){
+        println("La pila es troba plena")
+        plena = true
     }
+    return pila
 }
-fun errorIndex(pila: Array<Int?>, numero: Int): Boolean{
+
+/*fun errorIndex(pila: Array<Int?>, numero: Int): Boolean{
     var plena = false
     try {
         var index = 0
@@ -82,4 +90,4 @@ fun errorIndex(pila: Array<Int?>, numero: Int): Boolean{
         plena = true
     }
     return plena
-}
+}*/
