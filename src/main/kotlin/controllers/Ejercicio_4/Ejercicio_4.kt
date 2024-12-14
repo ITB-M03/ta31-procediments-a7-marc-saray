@@ -6,6 +6,8 @@ import java.util.*
 
 fun main(){
 
+
+
     //LLamamos a la funcion de abrir scanner
     val scan: Scanner = abrirScanner()
 
@@ -19,6 +21,14 @@ fun main(){
     cerrarScanner(scan)
 
 }
+/**
+ *@author Marc Cuenca
+ * @version 1.0
+ *
+ *@param msg imprime un mensaje al usuario
+ * @param scan scanea una frase
+ * @return Devuelve la frase
+ */
 
 //Creamos la funcion pedirTexto para que el usuario de un texto
 fun ponerTexto(msg: String, scan: Scanner): String{
@@ -32,6 +42,16 @@ fun ponerTexto(msg: String, scan: Scanner): String{
     //Devolvemos el valor
     return frase
 }
+
+/**
+ *@author Marc Cuenca
+ * @version 1.0
+ *
+ *@param msg imprime un mensaje al usuario
+ * @param espaciosAntes hacemoss el calculo del tamaño de la pantalla menos la longitud de la frase entre 2
+ * @param espaciosDespues hacemos lo mismo pero le restamos la val espacio antes
+ * @param repeat hacemos bucles con cada variable correspondiente y depende del nuemero que haya dado imprimira espacios
+ */
 
 //Creamos la funcion de espacios en blanco
 fun titol (frase:String) {

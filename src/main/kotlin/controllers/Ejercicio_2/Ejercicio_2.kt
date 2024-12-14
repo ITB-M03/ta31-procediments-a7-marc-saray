@@ -12,7 +12,7 @@ fun main(){
     val numero = pedirNumero("Introduce un Numero del 1 al 3999:", scan)
 
     //Llamamos a la funcion para convertir un entero a uno romano
-    val numeroRomano = Roman(numero)
+    val numeroRomano = roman(numero)
 
     //Llamamos a la funcion de mostrar por pantalla
     pantalla(numeroRomano)
@@ -20,6 +20,14 @@ fun main(){
     //Llamamos a la funcion de cerrar scanner
     cerrarScanner(scan)
 }
+/**
+ *@author Marc Cuenca
+ * @version 1.0
+ *
+ *@param msg imprime un mensaje al usuario
+ * @param scan scanea un numero Int
+ * @return Devuelve el numero
+ */
 
 // Creamos una funcion que sea "pedirNumero" (Entero)
 fun pedirNumero(msg: String, scan: Scanner): Int {
@@ -32,10 +40,19 @@ fun pedirNumero(msg: String, scan: Scanner): Int {
     // Devolvemos el valor del num
     return num
 }
+/**
+ *@author Marc Cuenca
+ * @version 1.0
+ *
+ *@param numeroRoman es un un lista que a ciertos nuemerios le ponemos el valor de una letra Romana
+ * @param resultado creamos una variable vacia para ir añadiendo los resultados
+ * @param for hacemos un bucle para ir los numeros respecto si cumplen la condicion o no
+ * @return
+ */
 
 // Creamos una funcion "intToRoman" y le pasaremos el numero que hemos pedido
 // y lo convertiremos en numero Romano
-fun Roman(num: Int): String {
+fun roman(num: Int): String {
     // Lista de pares con los símbolos romanos y sus valores
     val numeroRomano = listOf(
         "M" to 1000,
@@ -69,6 +86,13 @@ fun Roman(num: Int): String {
     //Devolvemos el número romano
     return resultado
 }
+/**
+ *@author Marc Cuenca
+ * @version 1.0
+ *
+ *@param println imprime el resultado
+ */
+
 //Creamos una funcion que sea mostrar por pantalla
 fun pantalla (numero: String) {
     println("EL numero en Romano es: $numero")
