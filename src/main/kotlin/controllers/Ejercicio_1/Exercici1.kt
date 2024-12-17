@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 fun main() {
+    Locale.setDefault(Locale.US)
+
     //Obrir scanner
     val scan: Scanner = openScan()
 
@@ -23,6 +25,7 @@ fun main() {
 
     //Mostrar el resultat
     showResultat(preuIVA)
+
 
     //Tancar scanner
     closeScan(scan)
@@ -159,7 +162,7 @@ fun calculaIVA(preu: Double, iva: String, consulta: String): String {
  *@param resultat imprimeix el resultat de la factura amb un missatge
  */
 fun showResultat(resultat: String) {
-    print("El resultat del preu amb el IVA és: ${String.format(Locale.UK, "%.2f", resultat)}")
+    println("El resultat del preu amb el IVA és: ${String.format(Locale.US, "%.2f", resultat.toDouble())}")
 }
 
 /**

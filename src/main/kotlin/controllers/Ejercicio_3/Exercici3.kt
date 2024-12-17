@@ -82,7 +82,7 @@ fun scanDate(msg: String, scan: Scanner): String {
  * @version 1.0
  *
  *@param num número que ens dona l'usuari
- * @param quantitat quantita que volem sumar-li al número
+ * @param quantitat quantitat que volem sumar-li al número
  * @return resultat de la suma
  */
 fun validarSuperusuari(preu: Int, iva: String, consulta: String): Double {
