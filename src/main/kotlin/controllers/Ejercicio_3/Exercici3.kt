@@ -7,17 +7,11 @@ fun main() {
     //Obrir scanner
     val scan: Scanner = openScan()
 
-    // Demanar les dades
-    val preu = scanNum("Introdueix un número: ", scan)
-    val IVA = scan("Introdueix un tipus d'IVA: ", scan)
-    val data = scanDate("Introdueix un data: ", scan)
-
-
-    // Calcular l'IVA
-    val preuIVA = validarSuperusuari(preu, IVA, data)
+    // Demanar les dades i comprovar el password
+    val validar = validarSuperusuari(scan)
 
     //Mostrar el resultat
-    showResultat(preuIVA)
+    showResultat(validar)
 
     //Tancar scanner
     closeScan(scan)
@@ -27,81 +21,27 @@ fun main() {
  *@author SarayV
  * @version 1.0
  *
- *@param msg missatge per imprimir
- * @param scan scaneja un número
- * @return el número escanejat
- */
-fun scanNum(msg: String, scan: Scanner): Int {
-    val numero: Int
-
-    println(msg)
-
-    numero = scan.nextInt()
-
-    return numero
-}
-
-/**
- *@author SarayV
- * @version 1.0
- *
- *@param msg missatge per imprimir
  * @param scan scaneja un string
- * @return el string escanejat
+ * @return resultat un Boolean que diu si el password es correcte
  */
-fun scan(msg: String, scan: Scanner): String {
-    val iva: String
+fun validarSuperusuari(scan: Scanner): Boolean {
 
-    println(msg)
+    println("Introdueix el password:")
+    var password = scan.next()
+    var resultat = false
+    val passSuper = "sudo"
+    var count = 0
 
-    iva = scan.next()
-
-    return iva.lowercase()
-}
-
-/**
- *@author SarayV
- * @version 1.0
- *
- *@param msg missatge per imprimir
- * @param scan scaneja un string
- * @return el string escanejat
- */
-fun scanDate(msg: String, scan: Scanner): String {
-    val date: String
-
-    println(msg)
-
-    date = scan.nextLine().toString()
-
-    return date
-}
-
-/**
- *@author SarayV
- * @version 1.0
- *
- *@param num número que ens dona l'usuari
- * @param quantitat quantita que volem sumar-li al número
- * @return resultat de la suma
- */
-fun validarSuperusuari(preu: Int, iva: String, consulta: String): Double {
-
-    var general = 0.0
-    var reduit = 0.0
-    var superReduit = 0.0
-    var exempt = 0.0
-
-    var resultat = 0.0
-
-    when(iva){
-        "genereal" -> resultat = preu * general
-        "reduit" -> resultat = preu * reduit
-        "reduït" -> resultat = preu * reduit
-        "superreduit" -> resultat = preu * superReduit
-        "exempt" -> resultat = preu * exempt
+    if (password == passSuper){
+        resultat = true
+    }else{
+        while (count < 3){
+            count ++
+            println("Password incorrecte, prova altra vegada")
+            password = scan.next()
+        }
+        print("Massa intents")
     }
-
     return resultat
 }
 
@@ -111,8 +51,12 @@ fun validarSuperusuari(preu: Int, iva: String, consulta: String): Double {
  *
  *@param resultat imprimeix el resultat de la suma amb un missatge
  */
-fun showResultat(resultat: Double) {
-    print("El resultat del preu amb el IVA és: $resultat")
+fun showResultat(resultat: Boolean) {
+    if (resultat){
+        println("El password és correcte")
+    }else {
+        print(" el password és incorrecte. Password correcte: sudo")
+    }
 }
 
 /**
