@@ -124,7 +124,7 @@ fun showResultat(resultat: Double) {
 fun openScan(): Scanner {
     val scan = Scanner(System.`in`).useLocale(Locale.UK)
 
-    return scan
+    return  scan
 }
 
 /**
