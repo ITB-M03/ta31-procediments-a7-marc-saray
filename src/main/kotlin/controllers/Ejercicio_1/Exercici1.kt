@@ -60,6 +60,7 @@ fun scanIVA(msg: String, scan: Scanner): String {
     println(msg)
 
     iva = scan.nextInt()
+    scan.nextLine()
 
     val tipus = arrayOf("general", "reduit", "superreduit", "exempt")
 
@@ -149,7 +150,7 @@ fun calculaIVA(preu: Double, iva: String, consulta: String): String {
         "exempt" -> resultat = preu * exempt
     }
 
-    return "%.2f".format(resultat)
+    return String.format(Locale.US, "%.2f", resultat)
 }
 
 /**
@@ -159,7 +160,7 @@ fun calculaIVA(preu: Double, iva: String, consulta: String): String {
  *@param resultat imprimeix el resultat de la factura amb un missatge
  */
 fun showResultat(resultat: String) {
-    print("El resultat del preu amb el IVA és: ${String.format(Locale.UK, "%.2f", resultat)}")
+    print("El resultat del preu amb el IVA és: $resultat")
 }
 
 /**
